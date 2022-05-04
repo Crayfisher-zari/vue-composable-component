@@ -2,7 +2,7 @@
 import { useChecks } from "./composables/useChecks";
 
 // コンポーザブル
-const { isAllChecked: isAllChecked, UseChecksComponent } = useChecks();
+const { isAllChecked, UseChecksComponent } = useChecks();
 </script>
 
 <template>
