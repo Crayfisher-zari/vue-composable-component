@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import Checks from "./components/Checks.vue";
 import { useChecks } from "./composables/useChecks";
 
 // コンポーザブル
