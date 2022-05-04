@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useChecks } from "./composables/useChecks";
 
+const labels = ["check 1", "check 2", "check 3"];
+
 // コンポーザブル
-const { isAllChecked, UseChecksComponent } = useChecks();
+const { isAllChecked, UseChecksComponent } = useChecks(labels);
 </script>
 
 <template>
