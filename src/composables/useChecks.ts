@@ -1,4 +1,5 @@
-import { computed, h, ref } from "vue";
+import { computed, defineComponent, h, ref } from "vue";
+import Checks from "../components/Checks.vue";
 
 export const useChecks = () => {
   const checkList = ref([false, false, false]);
@@ -10,6 +11,9 @@ export const useChecks = () => {
     return checkList.value.every((item) => item);
   });
 
-  const ChecksComponent = h()
-  
+  const render = () =>
+    h(Checks, { checkList: checkList.value, labels, onCheck: handleCheck });
+  const UseChecksComponent = defineComponent({ render });
+
+  return { isAllChecked, UseChecksComponent };
 };

@@ -1,30 +1,20 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import Checks from "./components/Checks.vue";
+import { useChecks } from "./composables/useChecks";
 
-const checkList = ref([false, false, false]);
-const labels = ["check 1", "check 2", "check 3"];
-const handleCheck = (index: number) => {
-  checkList.value[index] = !checkList.value[index];
-};
-
-const isAllChecked = computed(() => {
-  return checkList.value.every((item) => item);
-});
+// コンポーザブル
+const { isAllChecked: isAllChecked, UseChecksComponent } = useChecks();
 </script>
 
 <template>
   <section>
-    <h1>非コンポーザブル</h1>
+    <h1>コンポーザブル</h1>
     <div>
-      <Checks :check-list="checkList" :labels="labels" :onCheck="handleCheck" />
+      <UseChecksComponent />
     </div>
     <button :disabled="!isAllChecked">次へ</button>
   </section>
-  <section>
-    <h1>コンポーザブル</h1>
-  </section>
-  
 </template>
 
 <style>
@@ -34,5 +24,9 @@ const isAllChecked = computed(() => {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+section {
+  max-width: 600px;
+  margin: 0 auto;
 }
 </style>

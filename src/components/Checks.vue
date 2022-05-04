@@ -11,10 +11,17 @@ const props = defineProps<Props>();
   <ul>
     <li v-for="(item, index) in checkList" :key="index">
       <label>
-        <input type="checkbox" @change="(e)=>{onCheck(index)}" :checked="item" />
+        <input
+          type="checkbox"
+          @change="
+            (e) => {
+              onCheck(index);
+            }
+          "
+          :checked="item"
+        />
         {{ labels[index] }}
       </label>
     </li>
   </ul>
 </template>
-
