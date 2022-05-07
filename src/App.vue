@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { useChecks } from "./composables/useChecks";
 import { useEmailInput } from "./composables/useEmailInput";
+import { useTelInput } from "./composables/useTelInput";
 
 const labels = ["check 1", "check 2", "check 3"];
 
-const onUpdate = (e, text) => {
-  console.log(e, text);
-};
-
 // コンポーザブル
 const { isAllChecked, UseChecksComponent } = useChecks(labels);
-const { EmailInput, emailValue } = useEmailInput();
+const { EmailInput } = useEmailInput();
+const { TelInput } = useTelInput();
 </script>
 
 <template>
@@ -22,8 +20,12 @@ const { EmailInput, emailValue } = useEmailInput();
     <button :disabled="!isAllChecked">次へ</button>
   </section>
   <section>
-    <EmailInput @update="onUpdate" />
-    {{ emailValue }}
+    <p>
+      <label> E-mail:<EmailInput /></label>
+    </p>
+    <p>
+      <label> Tel:<TelInput /></label>
+    </p>
   </section>
 </template>
 
@@ -37,6 +39,6 @@ const { EmailInput, emailValue } = useEmailInput();
 }
 section {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 48px;
 }
 </style>
