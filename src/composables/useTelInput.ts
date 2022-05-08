@@ -7,16 +7,15 @@ export const useTelInput = () => {
     data.value = ($event.target as HTMLInputElement).value;
   };
   const validate = (text: string) => {
-    const regex =
-      /^0[-0-9]{9,12}$/gi;
+    const regex = /^0[-0-9]{9,12}$/gi;
     return regex.test(text);
   };
 
   const isValid = computed(() => {
-    if(data.value === ""){
-      return true
+    if (data.value === "") {
+      return true;
     }
-    return validate(data.value)
+    return validate(data.value);
   });
 
   const render = () =>
@@ -28,5 +27,9 @@ export const useTelInput = () => {
       isValid: isValid.value,
     });
   const TelInput = defineComponent({ render });
-  return { TelInput, telValue: computed(() => data.value) };
+  return {
+    TelInput,
+    telValue: computed(() => data.value),
+    isTelValid: isValid.value,
+  };
 };

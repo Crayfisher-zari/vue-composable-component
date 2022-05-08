@@ -11,7 +11,7 @@ defineProps<Props>();
 
 <template>
   <div>
-    <input :type="type" ref="inputElement" :value="value" @change="onChange" />
+    <input :type="type" :value="value" @change="onChange" />
     <p v-show="!isValid" class="invalidMessage">{{ invalidMessage }}</p>
   </div>
 </template>

@@ -13,10 +13,10 @@ export const useEmailInput = () => {
   };
 
   const isValid = computed(() => {
-    if(data.value === ""){
-      return true
+    if (data.value === "") {
+      return true;
     }
-    return validate(data.value)
+    return validate(data.value);
   });
 
   const render = () =>
@@ -28,5 +28,9 @@ export const useEmailInput = () => {
       isValid: isValid.value,
     });
   const EmailInput = defineComponent({ render });
-  return { EmailInput, emailValue: computed(() => data.value) };
+  return {
+    EmailInput,
+    emailValue: computed(() => data.value),
+    isEmailValid: isValid.value,
+  };
 };
